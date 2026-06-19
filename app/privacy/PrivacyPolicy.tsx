@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { Logo } from "../_components/Logo";
 import { SiteFooter } from "../_components/SiteFooter";
 import { policies, type Block, type Lang } from "./content";
@@ -81,20 +82,20 @@ function LangSwitch({ lang }: { lang: Lang }) {
   const idle = "text-foreground/70 hover:text-foreground";
   return (
     <div className="inline-flex rounded-lg border border-white/15 p-0.5 text-sm font-medium">
-      <a
+      <Link
         href="/privacy"
         aria-current={lang === "uz" ? "page" : undefined}
         className={`${base} ${lang === "uz" ? active : idle}`}
       >
         Oʻzbekcha
-      </a>
-      <a
+      </Link>
+      <Link
         href="/privacy/ru"
         aria-current={lang === "ru" ? "page" : undefined}
         className={`${base} ${lang === "ru" ? active : idle}`}
       >
         Русский
-      </a>
+      </Link>
     </div>
   );
 }
@@ -105,27 +106,27 @@ export function PrivacyPolicy({ lang }: { lang: Lang }) {
 
   return (
     <div className="flex flex-1 flex-col">
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-background/80 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
         <nav className="mx-auto flex h-16 w-full max-w-3xl items-center justify-between px-6">
-          <a href="/" className="flex items-center gap-2.5">
+          <Link href="/" className="flex items-center gap-2.5">
             <Logo className="h-8 w-8" priority />
             <span className="text-lg font-semibold tracking-tight">
               Train<span className="text-brand">Ball</span>
             </span>
-          </a>
+          </Link>
           <LangSwitch lang={lang} />
         </nav>
       </header>
 
       <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-12 md:py-16">
-        <a
+        <Link
           href="/"
           className="text-sm text-foreground/50 transition-colors hover:text-foreground"
         >
           ← {back}
-        </a>
+        </Link>
 
-        <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
+        <h1 className="mt-6 font-display text-3xl font-bold tracking-tight sm:text-4xl">
           {policy.title}
         </h1>
         <div className="mt-3 space-y-1 text-sm text-foreground/50">
@@ -145,7 +146,7 @@ export function PrivacyPolicy({ lang }: { lang: Lang }) {
         </p>
       </main>
 
-      <SiteFooter />
+      <SiteFooter locale={lang} />
     </div>
   );
 }

@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
-import { Landing } from "./_components/Landing";
-import { dictionaries } from "./_i18n/dictionaries";
+import { Landing } from "../_components/Landing";
+import { dictionaries } from "../_i18n/dictionaries";
 
-const t = dictionaries.en;
+const t = dictionaries.ru;
 
 export const metadata: Metadata = {
   title: { absolute: t.meta.title },
   description: t.meta.description,
   alternates: {
-    canonical: "/",
+    canonical: "/ru",
     languages: { en: "/", ru: "/ru", uz: "/uz", "x-default": "/" },
   },
   openGraph: {
     title: t.meta.title,
     description: t.meta.description,
-    locale: "en_US",
+    locale: "ru_RU",
   },
 };
 
 export default function Page() {
-  return <Landing locale="en" />;
+  return <Landing locale="ru" />;
 }
